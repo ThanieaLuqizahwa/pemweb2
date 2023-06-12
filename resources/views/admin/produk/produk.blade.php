@@ -8,6 +8,10 @@
     </ol>
     <div class="card mb-4">
         <div class="card-header">
+            <a href="{{ url('admin/produk/create') }}" class="btn btn-primary">Tambah Data</a>
+        </div>
+    <div class="card mb-4">
+        <div class="card-header">
             <i class="fas fa-table me-1"></i>
             Data Produk
         </div>
@@ -24,6 +28,7 @@
                         <th>Minimal Stok</th>
                         <th>Deskripsi</th>
                         <th>Ketegori Produk</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,15 +37,17 @@
                     @endphp
                     @foreach ($produk as $prod)
                     <tr>
-                        <th>{{ $no }}</th>
-                        <th>{{ $prod->kode }}</th>
-                        <th>{{ $prod->nama }}</th>
-                        <th>{{ $prod->harga_jual }}</th>
-                        <th>{{ $prod->harga_beli }}</th>
-                        <th>{{ $prod->stok }}</th>
-                        <th>{{ $prod->min_stok }}</th>
-                        <th>{{ $prod->deskripsi }}</th>
+                        <td>{{ $no }}</td>
+                        <td>{{ $prod->kode }}</td>
+                        <td>{{ $prod->nama }}</td>
+                        <td>{{ $prod->harga_jual }}</td>
+                        <td>{{ $prod->harga_beli }}</td>
+                        <td>{{ $prod->stok }}</td>
+                        <td>{{ $prod->min_stok }}</td>
+                        <td>{{ $prod->deskripsi }}</td>
                         <td>{{ $prod->nama_kategori }}</td>
+                        <td><a href="{{ url('admin/produk/edit/'. $prod->id) }}" class="btn btn-success">Edit</a></td>
+                        <td><a href="{{ url('admin/produk/delete/'. $prod->id) }}" class="btn btn-danger">Delete</a></td>
                     </tr>
                     @php
                         $no++
