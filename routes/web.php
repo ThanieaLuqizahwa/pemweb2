@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\SembilanController;
 use App\Http\Controllers\DelapanController;
@@ -52,6 +53,7 @@ Route::prefix('admin')->group(function(){
 });
 
 // route admin
+Route::group(['middleware' => ['auth']], function(){
 Route::prefix('admin')->group(function(){
     Route::get('/dashboard',[DashboardController::class, 'index']);
     Route::get('/produk',[ProdukController::class, 'index']);
@@ -62,6 +64,7 @@ Route::prefix('admin')->group(function(){
     Route::get('produk/edit/{id}', [ProdukController::class, 'edit']);
     Route::post('produk/update/{id}', [ProdukController::class, 'update']);
     Route::get('produk/delete/{id}', [ProdukController::class, 'destroy']);
+    
     Route::get('/pesanan/create', [PesananController::class, 'create']);
     Route::post('/pesanan/store', [PesananController::class, 'store']);
     Route::get('pesanan/edit/{id}', [PesananController::class, 'edit']);
@@ -69,4 +72,17 @@ Route::prefix('admin')->group(function(){
     Route::get('pesanan/delete/{id}', [PesananController::class, 'destroy']);
     Route::get('/kategoriproduk/create', [KategoriProdukController::class, 'create']);
     Route::post('/kategoriproduk/store', [KategoriProdukController::class, 'store']);
+
+    Route::get('/logout', [DashboardController::class, 'logout']);
 });
+});
+
+// route frontend
+Route::prefix('frontend')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/sepuluh', [SepuluhController::class, 'index']);
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
