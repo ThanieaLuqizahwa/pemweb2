@@ -25,7 +25,7 @@
                 <h3>Contact </h3>
                 <ul class="conta">
                    <li><i class="fa fa-map-marker" aria-hidden="true"></i> Location</li>
-                   <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="#"> demo@gmail.com</a></li>
+                   <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="#"> tluqizahwa@gmail.com</a></li>
                    <li><i class="fa fa-mobile" aria-hidden="true"></i> Call : +01 1234567890</li>
                 </ul>
                 <ul class="social_icon">

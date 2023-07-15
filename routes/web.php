@@ -53,7 +53,7 @@ Route::prefix('admin')->group(function(){
 });
 
 // route admin
-Route::group(['middleware' => ['auth']], function(){
+Route::group(['middleware' => ['auth', 'peran:admin-manager']], function(){
 Route::prefix('admin')->group(function(){
     Route::get('/dashboard',[DashboardController::class, 'index']);
     Route::get('/produk',[ProdukController::class, 'index']);
@@ -80,6 +80,7 @@ Route::prefix('admin')->group(function(){
 // route frontend
 Route::prefix('frontend')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/about',[SepuluhController::class, 'index']);
     Route::get('/sepuluh', [SepuluhController::class, 'index']);
 });
 
